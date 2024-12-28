@@ -6,12 +6,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+
+import static jakarta.persistence.FetchType.LAZY;
+import static org.hibernate.annotations.FetchMode.SUBSELECT;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
@@ -53,7 +57,8 @@ public class CourseModel implements Serializable {
     private String imageUrl;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch = LAZY)
+    @Fetch(SUBSELECT)
     private Set<ModuleModel> modules;
 
     public UUID getCourseId() {

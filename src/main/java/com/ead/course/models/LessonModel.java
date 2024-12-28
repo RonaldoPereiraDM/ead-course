@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_LESSONS")
@@ -34,7 +36,7 @@ public class LessonModel implements Serializable {
     private LocalDateTime creationDate;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = LAZY, optional = false)
     private ModuleModel module;
 
     public UUID getLessonId() {

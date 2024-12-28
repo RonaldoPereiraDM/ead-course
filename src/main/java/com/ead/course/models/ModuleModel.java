@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
+import static jakarta.persistence.FetchType.LAZY;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_MODULES")
@@ -31,12 +34,12 @@ public class ModuleModel implements Serializable {
     @Column(nullable = false)
     private LocalDateTime creationDate;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToOne(optional = false)
+    @JsonProperty(access = WRITE_ONLY)
+    @ManyToOne(fetch = LAZY, optional = false)
     private CourseModel course;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "module")
+    @JsonProperty(access = WRITE_ONLY)
+    @OneToMany(mappedBy = "module", fetch = LAZY)
     private Set<LessonModel> lessons;
 
     public UUID getModuleId() {
