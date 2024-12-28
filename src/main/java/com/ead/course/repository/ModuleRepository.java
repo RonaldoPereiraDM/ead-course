@@ -15,7 +15,7 @@ public interface ModuleRepository extends JpaRepository<ModuleModel, UUID> {
     @EntityGraph(attributePaths = {"course"})
     ModuleModel findByTitle(String title);
 
-    @Modifying//quando precisar modificar algo na base dados
+    //@Modifying//quando precisar modificar algo na base dados
     @Query(value = """
             SELECT * FROM tb_modules 
             WHERE course_course_id = :courseId
