@@ -8,8 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.http.HttpStatus.CONFLICT;
-import static org.springframework.http.HttpStatus.CREATED;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.ResponseEntity.status;
 
 @RestController
@@ -36,4 +39,31 @@ public class CourseController {
         return status(CREATED).body(save);
     }
 
+    @GetMapping
+    public ResponseEntity<List<CourseModel>> getAllCourses(){
+        List<CourseModel> all = courseService.findAll();
+        return status(OK).body(all);
+    }
+
+    @GetMapping("/{courseId}")
+    public ResponseEntity<CourseModel> getOneCourse(@PathVariable("courseId") UUID courseId){
+        Optional<CourseModel> courseModel = courseService.findById(courseId);
+        return status(OK).body(courseModel.get());
+    }
+
+    @DeleteMapping("/{courseId}")
+    public ResponseEntity<Object> deleteCourse(@PathVariable("courseId") UUID courseId){
+        CourseModel courseModel = courseService.findById(courseId).get();
+        courseService.delete(courseModel);
+        return status(OK).body("Course deleted successfully.");
+    }
+
+    @PutMapping("/{courseId}")
+    public ResponseEntity<Object> updateCourse(
+            @PathVariable("courseId") UUID courseId,
+            @RequestBody @Valid CourseRecordDto courseRecordDto
+    ){
+        CourseModel update = courseService.update(courseRecordDto, courseService.findById(courseId).get());
+        return status(OK).body(update);
+    }
 }
