@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -31,9 +32,46 @@ public class ModuleController {
     public ResponseEntity<Object> saveModule(
             @PathVariable("courseId") UUID courseId,
             @RequestBody @Valid ModuleRecordDto moduleRecordDto
-    ){
+    ) {
         ModuleModel saved = moduleService.save(moduleRecordDto, courseService.findById(courseId).get());
         return status(OK).body(saved);
+    }
+
+    @GetMapping("/courses/{courseId}/modules")
+    public ResponseEntity<List<ModuleModel>> getAllModules(
+            @PathVariable("courseId") UUID courseId
+    ) {
+        List<ModuleModel> courseModuleModelList = moduleService.findAllModulesIntoCourse(courseId);
+        return status(OK).body(courseModuleModelList);
+    }
+
+    @GetMapping("/courses/{courseId}/modules/{moduleId}")
+    public ResponseEntity<Object> getOneModule(
+            @PathVariable("courseId") UUID courseId,
+            @PathVariable("moduleId") UUID moduleId
+    ) {
+        ModuleModel moduleModelFinded = moduleService.findModuleIntoCourse(courseId, moduleId).get();
+        return status(OK).body(moduleModelFinded);
+    }
+
+    @DeleteMapping("/courses/{courseId}/modules/{moduleId}")
+    public ResponseEntity<Object> deleteModule(
+            @PathVariable("courseId") UUID courseId,
+            @PathVariable("moduleId") UUID moduleId
+    ) {
+        moduleService.delete(moduleService.findModuleIntoCourse(courseId, moduleId).get());
+        return status(OK).body("Course deleted successfully.");
+    }
+
+    @PutMapping("/courses/{courseId}/modules/{moduleId}")
+    public ResponseEntity<Object> updateModule(
+            @PathVariable("courseId") UUID courseId,
+            @PathVariable("moduleId") UUID moduleId,
+            @RequestBody @Valid ModuleRecordDto moduleRecordDto
+    ) {
+        ModuleModel updated = moduleService.update(moduleRecordDto, moduleService.findModuleIntoCourse(courseId, moduleId).get());
+
+        return status(OK).body(updated);
     }
 
 }
