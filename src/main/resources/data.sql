@@ -194,3 +194,220 @@ INSERT INTO tb_modules (module_id, creation_date, description, title, course_cou
 VALUES ('8e03f1bb-9d18-410e-b283-5b643fbec5bd', '2024-07-15 15:00:00',
 'Microsserviços com Node.js: Arquitetura distribuída, comunicação entre serviços, event-driven development e containers',
 'Microsserviços e Arquitetura Distribuída', '98765432-9876-4321-abcd-123456789abc');
+
+-----------------------------------  Lições para o módulo 1 do curso Full Stack Development ---------------------------------------------
+-----------------------------------  Módulo 1: Preparando o ambiente de desenvolvimento  ------------------------------------------------
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url , module_module_id
+)
+VALUES (
+'32dca517-812f-4c9e-9b86-569db6585f8e', '2024-12-29 03:29:00.777295', 'Vamos instalar a versão do java necessária para o curso',
+'1. Instalação do Java 21', 'www.exemplourl.com/video1', 'bdef20b3-f529-438f-8f69-c6e515fd540c'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'4d32c6d8-614e-4ab9-bbf8-8ab6b306df4a', '2024-12-29 03:29:00.777295', 'Aprenda a configurar as variáveis de ambiente do Java no seu sistema operacional',
+'2. Configurando Variáveis de Ambiente', 'www.exemplourl.com/video2', 'bdef20b3-f529-438f-8f69-c6e515fd540c'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'9128685d-cae5-4361-9ec1-ee6888a60bd9', '2024-12-29 03:29:00.777295', 'Instale e configure a IDE IntelliJ IDEA para desenvolvimento Java',
+'3. Instalação da IDE IntelliJ', 'www.exemplourl.com/video3', 'bdef20b3-f529-438f-8f69-c6e515fd540c'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'89fdc84a-b45f-4f9c-c19a-8a3fe9818d3f', '2024-12-29 03:29:00.777295', 'Configure o Git no seu computador e aprenda os comandos básicos',
+'4. Configuração do Git', 'www.exemplourl.com/video4', 'bdef20b3-f529-438f-8f69-c6e515fd540c'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'ef385d4a-d8e3-4edc-9bbb-4f922525280f', '2024-12-29 03:29:00.777295', 'Aprenda a criar e configurar um projeto Maven do zero',
+'5. Criando Projeto Maven', 'www.exemplourl.com/video5', 'bdef20b3-f529-438f-8f69-c6e515fd540c'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'63d99e1e-11c9-4aa7-bedb-f0f2af9ad122', '2024-12-29 03:29:00.777295', 'Aprenda a instalar e configurar o PostgreSQL, incluindo a criação do usuário e banco de dados inicial',
+'6. Instalação e Configuração do PostgreSQL', 'www.exemplourl.com/video6', 'bdef20b3-f529-438f-8f69-c6e515fd540c'
+);
+
+-----------------------------------  Lições para o módulo 2 do curso Full Stack Development ---------------------------------------------
+-----------------------------------  Módulo 2: Desenvolvimento Front-end com React e TypeScript  ----------------------------------------
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'123e4567-e89b-12d3-a456-426614174000', '2024-08-21 16:30:00', 'Aprenda os conceitos fundamentais do TypeScript e sua importância no desenvolvimento front-end',
+'1. Introdução ao TypeScript', 'www.exemplourl.com/video1', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'223e4567-e89b-12d3-a456-426614174001', '2024-08-21 16:30:00', 'Explore os tipos básicos e avançados do TypeScript para desenvolvimento mais seguro',
+'2. Sistema de Tipos no TypeScript', 'www.exemplourl.com/video2', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'323e4567-e89b-12d3-a456-426614174002', '2024-08-21 16:30:00', 'Compreenda os fundamentos do React e sua arquitetura baseada em componentes',
+'3. Fundamentos do React', 'www.exemplourl.com/video3', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'423e4567-e89b-12d3-a456-426614174003', '2024-08-21 16:30:00', 'Aprenda a criar e gerenciar estados em componentes React usando Hooks',
+'4. Estados e Hooks no React', 'www.exemplourl.com/video4', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'523e4567-e89b-12d3-a456-426614174004', '2024-08-21 16:30:00', 'Entenda como implementar navegação entre páginas usando React Router',
+'5. Roteamento com React Router', 'www.exemplourl.com/video5', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'623e4567-e89b-12d3-a456-426614174005', '2024-08-21 16:30:00', 'Aprenda a gerenciar formulários em React com validações e tratamento de erros',
+'6. Formulários no React', 'www.exemplourl.com/video6', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'723e4567-e89b-12d3-a456-426614174006', '2024-08-21 16:30:00', 'Explore técnicas de estilização em React usando CSS Modules e Styled Components',
+'7. Estilização em React', 'www.exemplourl.com/video7', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'823e4567-e89b-12d3-a456-426614174007', '2024-08-21 16:30:00', 'Aprenda a fazer chamadas API e gerenciar estados assíncronos em aplicações React',
+'8. Integração com APIs', 'www.exemplourl.com/video8', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'923e4567-e89b-12d3-a456-426614174008', '2024-08-21 16:30:00', 'Implemente autenticação e autorização em sua aplicação React',
+'9. Autenticação e Autorização', 'www.exemplourl.com/video9', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+INSERT INTO tb_lessons (
+lesson_id, creation_date, description,
+title, video_url, module_module_id
+)
+VALUES (
+'a23e4567-e89b-12d3-a456-426614174009', '2024-08-21 16:30:00', 'Aprenda as melhores práticas de otimização e performance em aplicações React',
+'10. Otimização e Performance', 'www.exemplourl.com/video10', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
+);
+
+-----------------------------------  Lições para o módulo 3 do curso Full Stack Development ---------------------------------------------
+-----------------------------------  Módulo 3: Back End  --------------------------------------------------------------------------------
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('f47ac10b-58cc-4372-a567-0e02b2c3d479', '2024-08-22 16:30:00', 'Introdução aos conceitos fundamentais do Spring Boot e configuração do ambiente de desenvolvimento', '1. Fundamentos do Spring Boot', 'www.exemplourl.com/video1', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('550e8400-e29b-41d4-a716-446655440000', '2024-08-22 16:30:00', 'Aprenda a criar APIs RESTful utilizando Spring Boot e implemente os principais métodos HTTP', '2. Desenvolvimento de APIs REST', 'www.exemplourl.com/video2', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('6ba7b810-9dad-11d1-80b4-00c04fd430c8', '2024-08-22 16:30:00', 'Implementação de persistência de dados com Spring Data JPA e PostgreSQL', '3. Spring Data JPA', 'www.exemplourl.com/video3', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('7c9e6679-7425-40de-944b-e07fc1f90ae7', '2024-08-22 16:30:00', 'Técnicas de validação de dados e tratamento de exceções em aplicações Spring Boot', '4. Validação e Tratamento de Erros', 'www.exemplourl.com/video4', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('8c9e6679-7425-40de-944b-e07fc1f90ae8', '2024-08-22 16:30:00', 'Implementação de autenticação e autorização usando Spring Security', '5. Spring Security', 'www.exemplourl.com/video5', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('9c9e6679-7425-40de-944b-e07fc1f90ae9', '2024-08-22 16:30:00', 'Testes unitários e de integração em aplicações Spring Boot', '6. Testes com Spring Boot', 'www.exemplourl.com/video6', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('ac9e6679-7425-40de-944b-e07fc1f90ae0', '2024-08-22 16:30:00', 'Documentação de APIs com Swagger e OpenAPI', '7. Documentação de APIs', 'www.exemplourl.com/video7', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id)
+VALUES ('bc9e6679-7425-40de-944b-e07fc1f90ae1', '2024-08-22 16:30:00', 'Deploy e monitoramento de aplicações Spring Boot em ambiente de produção', '8. Deploy e Monitoramento', 'www.exemplourl.com/video8', 'edef40b5-f749-438f-8f69-c6e515fd542e');
+
+
+-----------------------------------  Lições para o módulo 4 do curso Full Stack Development ---------------------------------------------
+-----------------------------------  Módulo 4: Integração  ------------------------------------------------------------------------------
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('3bc75e4d-9182-45f4-80eb-de55c4846a1c', '2024-08-23 16:30:00', 'Compreenda a arquitetura cliente-servidor e os fundamentos da integração entre front-end e back-end', '1. Fundamentos da Integração Front-end e Back-end', 'www.exemplourl.com/video1', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('b7c31e8d-f234-4c2e-9f42-2d6e7214116b', '2024-08-23 16:30:00', 'Aprenda a realizar requisições HTTP utilizando Fetch API e Axios para comunicação com o backend', '2. Requisições HTTP e APIs REST', 'www.exemplourl.com/video2', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('00318e40-08c2-464f-bf47-80e5b6a90c97', '2024-08-23 16:30:00', 'Implemente autenticação e autorização em sua aplicação usando tokens JWT', '3. Autenticação e Autorização', 'www.exemplourl.com/video3', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('0e94bac7-b60c-4832-b067-ee79f39e3812', '2024-08-23 16:30:00', 'Gerencie o estado global da aplicação com Context API e integração com backend', '4. Gerenciamento de Estado e Integração', 'www.exemplourl.com/video4', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('cd8eff77-c626-441a-9e83-375880c6f152', '2024-08-23 16:30:00', 'Aprenda a tratar erros e implementar feedback visual para requisições ao backend', '5. Tratamento de Erros e Feedback', 'www.exemplourl.com/video5', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('7d4fd58d-d192-4919-bf13-84138f06739e', '2024-08-23 16:30:00', 'Configure ambientes de desenvolvimento, homologação e produção', '6. Ambientes de Deploy', 'www.exemplourl.com/video6', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('ba0abcd6-906c-4092-b91d-a4b7ba08eee8', '2024-08-23 16:30:00', 'Implemente cache e otimizações de performance na integração front-end e back-end', '7. Cache e Otimização', 'www.exemplourl.com/video7', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('55e94c32-6252-4df9-895a-d85876199bfd', '2024-08-23 16:30:00', 'Configure e realize o deploy de aplicações React em serviços de hospedagem', '8. Deploy de Aplicações React', 'www.exemplourl.com/video8', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('22809cf0-3dda-4fe7-83fb-e267ee6c7724', '2024-08-23 16:30:00', 'Aprenda a configurar e utilizar variáveis de ambiente em diferentes ambientes', '9. Variáveis de Ambiente', 'www.exemplourl.com/video9', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('c3a1957a-8d9d-4771-8af2-8bc9e5a70a3b', '2024-08-23 16:30:00', 'Implemente monitoramento e logging para acompanhar o desempenho da aplicação', '10. Monitoramento e Logging', 'www.exemplourl.com/video10', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('e84a676e-53ab-4f54-8d57-ca93725fdeb7', '2024-08-23 16:30:00', 'Configure e implemente CI/CD para automatizar o processo de deploy', '11. CI/CD e Automação', 'www.exemplourl.com/video11', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
+
+INSERT INTO tb_lessons (lesson_id, creation_date, description, title, video_url, module_module_id) VALUES
+('d52ea7e6-7a1a-491c-80e6-1f7957f16703', '2024-08-23 16:30:00', 'Aprenda as melhores práticas de segurança na integração front-end e back-end', '12. Segurança na Integração', 'www.exemplourl.com/video12', 'fdef50b6-f859-438f-8f69-c6e515fd543f');
