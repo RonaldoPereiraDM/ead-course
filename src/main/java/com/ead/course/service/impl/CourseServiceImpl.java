@@ -1,6 +1,5 @@
 package com.ead.course.service.impl;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.exceptions.NotFoundException;
 import com.ead.course.models.CourseModel;
@@ -10,8 +9,12 @@ import com.ead.course.repository.CourseRepository;
 import com.ead.course.repository.LessonRepository;
 import com.ead.course.repository.ModuleRepository;
 import com.ead.course.service.CourseService;
+import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -71,8 +74,8 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<CourseModel> findAll() {
-        return courseRepository.findAll();
+    public Page<CourseModel> findAll(Specification<CourseModel> spec, Pageable pageable) {
+        return courseRepository.findAll(spec, pageable);
     }
 
     @Override
