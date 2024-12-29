@@ -21,4 +21,6 @@ public interface ModuleService {
     Optional<ModuleModel> findModuleIntoCourse(UUID courseId, UUID moduleId);
 
     ModuleModel update(@Valid ModuleRecordDto moduleRecordDto, ModuleModel moduleModel);
+
+    Optional<ModuleModel> findById(UUID moduleId);
 }
