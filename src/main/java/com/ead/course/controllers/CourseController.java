@@ -1,5 +1,6 @@
 package com.ead.course.controllers;
 
+import com.ead.course.configs.annotations.Monitored;
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.models.CourseModel;
 import com.ead.course.models.ModuleModel;
@@ -38,6 +39,7 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+    @Monitored
     @PostMapping
     public ResponseEntity<Object> saveCourse(@RequestBody @Valid CourseRecordDto courseRecordDto){
         logger.debug("POST saveCourse courseRecordDto received {}", courseRecordDto);
@@ -50,6 +52,7 @@ public class CourseController {
         return status(CREATED).body(save);
     }
 
+    @Monitored
     @GetMapping
     public ResponseEntity<Page<CourseModel>> getAllCourses(SpecificationTemplate.CourseSpec spec, Pageable pageable){
         logger.debug("GET all courses.");
@@ -66,6 +69,7 @@ public class CourseController {
         return status(OK).body(all);
     }
 
+    @Monitored
     @GetMapping("/{courseId}")
     public ResponseEntity<CourseModel> getOneCourse(@PathVariable("courseId") UUID courseId){
         logger.debug("GET retreiveCourse courseId received {}", courseId);
@@ -73,6 +77,7 @@ public class CourseController {
         return status(OK).body(courseModel.get());
     }
 
+    @Monitored
     @DeleteMapping("/{courseId}")
     public ResponseEntity<Object> deleteCourse(@PathVariable("courseId") UUID courseId){
         logger.debug("DELETE deleteCourse courseId received {}", courseId);
@@ -81,6 +86,7 @@ public class CourseController {
         return status(OK).body("Course deleted successfully.");
     }
 
+    @Monitored
     @PutMapping("/{courseId}")
     public ResponseEntity<Object> updateCourse(
             @PathVariable("courseId") UUID courseId,

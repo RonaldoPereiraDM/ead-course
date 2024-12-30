@@ -1,5 +1,6 @@
 package com.ead.course.controllers;
 
+import com.ead.course.configs.annotations.Monitored;
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.dtos.LessonRecordDto;
 import com.ead.course.models.CourseModel;
@@ -38,6 +39,7 @@ public class LessonController {
         this.lessonService = lessonService;
     }
 
+    @Monitored
     @PostMapping("/modules/{moduleId}/lessons")
     public ResponseEntity<Object> saveLesson(
             @PathVariable(value = "moduleId") UUID moduleId,
@@ -46,6 +48,7 @@ public class LessonController {
         return status(HttpStatus.CREATED).body(lessonModel);
     }
 
+    @Monitored
     @GetMapping("/modules/{moduleId}/lessons")
     public ResponseEntity<Page<LessonModel>> getAllLessons(
             @PathVariable(value = "moduleId") UUID moduleId,
@@ -67,6 +70,7 @@ public class LessonController {
         return status(OK).body(allLessonsIntoModule);
     }
 
+    @Monitored
     @GetMapping("/modules/{moduleId}/lessons/{lessonId}")
     public ResponseEntity<LessonModel> getOneLesson(
             @PathVariable("moduleId") UUID moduleId,
@@ -76,6 +80,7 @@ public class LessonController {
         return status(OK).body(lessonModel);
     }
 
+    @Monitored
     @DeleteMapping("/modules/{moduleId}/lessons/{lessonId}")
     public ResponseEntity<Object> deleteModule(
             @PathVariable("moduleId") UUID moduleId,
@@ -85,6 +90,7 @@ public class LessonController {
         return status(OK).body("Lesson deleted successfully");
     }
 
+    @Monitored
     @PutMapping("/modules/{moduleId}/lessons/{lessonId}")
     public ResponseEntity<Object> updateLesson(
             @PathVariable("moduleId") UUID moduleId,

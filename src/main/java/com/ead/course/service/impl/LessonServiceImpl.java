@@ -1,5 +1,6 @@
 package com.ead.course.service.impl;
 
+import com.ead.course.configs.annotations.Monitored;
 import com.ead.course.dtos.LessonRecordDto;
 import com.ead.course.exceptions.NotFoundException;
 import com.ead.course.models.LessonModel;
@@ -27,6 +28,7 @@ public class LessonServiceImpl implements LessonService {
         this.lessonRepository = lessonRepository;
     }
 
+    @Monitored
     @Override
     public LessonModel save(LessonRecordDto lessonRecordDto, ModuleModel moduleModel) {
         var lessonModel = new LessonModel();
@@ -36,11 +38,13 @@ public class LessonServiceImpl implements LessonService {
         return lessonRepository.save(lessonModel);
     }
 
+    @Monitored
     @Override
     public List<LessonModel> findAllLessonsIntoModule(UUID moduleId) {
         return lessonRepository.findAllLessonsIntoModule(moduleId);
     }
 
+    @Monitored
     @Override
     public Optional<LessonModel> findLessonIntoModule(UUID moduleId, UUID lessonId) {
         Optional<LessonModel> lessonIntoModule = lessonRepository.findLessonIntoModule(moduleId, lessonId);
@@ -50,17 +54,20 @@ public class LessonServiceImpl implements LessonService {
         return lessonIntoModule;
     }
 
+    @Monitored
     @Override
     public void delete(LessonModel lessonModel) {
         lessonRepository.delete(lessonModel);
     }
 
+    @Monitored
     @Override
     public LessonModel update(LessonRecordDto lessonRecordDto, LessonModel lessonModel) {
         BeanUtils.copyProperties(lessonRecordDto, lessonModel);
         return lessonRepository.save(lessonModel);
     }
 
+    @Monitored
     @Override
     public Page<LessonModel> findAllLessonsIntoModule(UUID moduleId, Specification<LessonModel> spec, Pageable pageable) {
         return lessonRepository.findAll(spec, pageable);

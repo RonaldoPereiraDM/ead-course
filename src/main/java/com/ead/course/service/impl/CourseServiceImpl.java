@@ -1,5 +1,6 @@
 package com.ead.course.service.impl;
 
+import com.ead.course.configs.annotations.Monitored;
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.exceptions.NotFoundException;
 import com.ead.course.models.CourseModel;
@@ -42,6 +43,7 @@ public class CourseServiceImpl implements CourseService {
         this.lessonRepository = lessonRepository;
     }
 
+    @Monitored
     @Transactional
     @Override
     public void delete(CourseModel courseModel) {
@@ -58,6 +60,7 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.delete(courseModel);
     }
 
+    @Monitored
     @Override
     public CourseModel save(CourseRecordDto courseRecordDto) {
         var courseModel = new CourseModel();
@@ -68,16 +71,19 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.save(courseModel);
     }
 
+    @Monitored
     @Override
     public boolean existsByName(String name) {
         return courseRepository.existsByName(name);
     }
 
+    @Monitored
     @Override
     public Page<CourseModel> findAll(Specification<CourseModel> spec, Pageable pageable) {
         return courseRepository.findAll(spec, pageable);
     }
 
+    @Monitored
     @Override
     public Optional<CourseModel> findById(UUID courseId) {
         Optional<CourseModel> courseModelOptional = courseRepository.findById(courseId);
@@ -87,6 +93,7 @@ public class CourseServiceImpl implements CourseService {
         return courseModelOptional;
     }
 
+    @Monitored
     @Override
     public CourseModel update(CourseRecordDto courseRecordDto, CourseModel courseModel) {
         BeanUtils.copyProperties(courseRecordDto, courseModel);

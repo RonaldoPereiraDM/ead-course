@@ -1,5 +1,6 @@
 package com.ead.course.service.impl;
 
+import com.ead.course.configs.annotations.Monitored;
 import com.ead.course.dtos.ModuleRecordDto;
 import com.ead.course.exceptions.NotFoundException;
 import com.ead.course.models.CourseModel;
@@ -36,6 +37,7 @@ public class ModuleServiceImpl implements ModuleService {
         this.lessonRepository = lessonRepository;
     }
 
+    @Monitored
     @Transactional
     @Override
     public void delete(ModuleModel moduleModel) {
@@ -46,6 +48,7 @@ public class ModuleServiceImpl implements ModuleService {
         moduleRepository.delete(moduleModel);
     }
 
+    @Monitored
     @Override
     public ModuleModel save(ModuleRecordDto moduleRecordDto, CourseModel courseModel) {
         var moduleModel = new ModuleModel();
@@ -56,11 +59,13 @@ public class ModuleServiceImpl implements ModuleService {
         return moduleRepository.save(moduleModel);
     }
 
+    @Monitored
     @Override
     public List<ModuleModel> findAllModulesIntoCourse(UUID courseId) {
         return moduleRepository.findAllModulesIntoCourse(courseId);
     }
 
+    @Monitored
     @Override
     public Optional<ModuleModel> findModuleIntoCourse(UUID courseId, UUID moduleId) {
         Optional<ModuleModel> moduleModelOptional = moduleRepository.findModulesIntoCourse(courseId, moduleId);
@@ -70,12 +75,14 @@ public class ModuleServiceImpl implements ModuleService {
         return moduleModelOptional;
     }
 
+    @Monitored
     @Override
     public ModuleModel update(ModuleRecordDto moduleRecordDto, ModuleModel moduleModel) {
         BeanUtils.copyProperties(moduleRecordDto, moduleModel);
         return moduleRepository.save(moduleModel);
     }
 
+    @Monitored
     @Override
     public Optional<ModuleModel> findById(UUID moduleId) {
         Optional<ModuleModel> moduleModelOptional = moduleRepository.findById(moduleId);
@@ -85,6 +92,7 @@ public class ModuleServiceImpl implements ModuleService {
         return moduleModelOptional;
     }
 
+    @Monitored
     @Override
     public Page<ModuleModel> findAllModulesIntoCourse(Specification<ModuleModel> spec, Pageable pageable) {
         return moduleRepository.findAll(spec, pageable);
