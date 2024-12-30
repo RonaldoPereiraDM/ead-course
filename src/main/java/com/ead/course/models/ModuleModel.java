@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,7 +17,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_MODULES")
-public class ModuleModel implements Serializable {
+public class ModuleModel extends RepresentationModel<CourseModel> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

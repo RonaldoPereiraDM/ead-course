@@ -2,6 +2,7 @@ package com.ead.course.controllers;
 
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.models.CourseModel;
+import com.ead.course.models.ModuleModel;
 import com.ead.course.service.CourseService;
 import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.validation.Valid;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.ResponseEntity.status;
 
@@ -45,6 +48,16 @@ public class CourseController {
     @GetMapping
     public ResponseEntity<Page<CourseModel>> getAllCourses(SpecificationTemplate.CourseSpec spec, Pageable pageable){
         Page<CourseModel> all = courseService.findAll(spec, pageable);
+
+        if(!all.isEmpty()){
+            for (CourseModel course : all.toList()){
+                UUID courseId = course.getCourseId();
+                ResponseEntity<CourseModel> oneCourse = methodOn(CourseController.class).getOneCourse(courseId);
+                course.add(linkTo(oneCourse).withSelfRel()
+                );
+            }
+        }
+
         return status(OK).body(all);
     }
 

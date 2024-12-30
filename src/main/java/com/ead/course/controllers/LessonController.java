@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.ResponseEntity.status;
 
@@ -52,11 +54,21 @@ public class LessonController {
     ) {
         Specification<LessonModel> lessonModelSpecification = SpecificationTemplate.lessonModuleId(moduleId).and(spec);
         Page<LessonModel> allLessonsIntoModule = lessonService.findAllLessonsIntoModule(moduleId, lessonModelSpecification, pageable);
+
+        if(!allLessonsIntoModule.isEmpty()){
+            for (LessonModel lesson : allLessonsIntoModule.toList()){
+                UUID lessonId = lesson.getLessonId();
+                ResponseEntity<LessonModel> oneModule = methodOn(LessonController.class).getOneLesson(lessonId, moduleId);
+                lesson.add(linkTo(oneModule).withSelfRel()
+                );
+            }
+        }
+
         return status(OK).body(allLessonsIntoModule);
     }
 
     @GetMapping("/modules/{moduleId}/lessons/{lessonId}")
-    public ResponseEntity<LessonModel> getOneModule(
+    public ResponseEntity<LessonModel> getOneLesson(
             @PathVariable("moduleId") UUID moduleId,
             @PathVariable("lessonId") UUID lessonId
     ) {

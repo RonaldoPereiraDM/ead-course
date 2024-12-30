@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -22,7 +23,7 @@ import static org.hibernate.annotations.FetchMode.SUBSELECT;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_COURSES")
-public class CourseModel implements Serializable {
+public class CourseModel extends RepresentationModel<CourseModel> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

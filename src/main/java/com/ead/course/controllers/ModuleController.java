@@ -1,6 +1,7 @@
 package com.ead.course.controllers;
 
 import com.ead.course.dtos.ModuleRecordDto;
+import com.ead.course.models.CourseModel;
 import com.ead.course.models.ModuleModel;
 import com.ead.course.service.CourseService;
 import com.ead.course.service.ModuleService;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.ResponseEntity.status;
@@ -49,12 +52,22 @@ public class ModuleController {
             Pageable pageable
     ) {
         Specification<ModuleModel> moduleModelSpecification = SpecificationTemplate.moduleCourseId(courseId).and(spec);
-        Page<ModuleModel> courseModuleModelList = moduleService.findAllModulesIntoCourse(moduleModelSpecification, pageable);
-        return status(OK).body(courseModuleModelList);
+        Page<ModuleModel> courseModuleModelPage = moduleService.findAllModulesIntoCourse(moduleModelSpecification, pageable);
+
+        if(!courseModuleModelPage.isEmpty()){
+            for (ModuleModel module : courseModuleModelPage.toList()){
+                UUID moduleId = module.getModuleId();
+                ResponseEntity<ModuleModel> oneModule = methodOn(ModuleController.class).getOneModule(courseId, moduleId);
+                module.add(linkTo(oneModule).withSelfRel()
+                );
+            }
+        }
+
+        return status(OK).body(courseModuleModelPage);
     }
 
     @GetMapping("/courses/{courseId}/modules/{moduleId}")
-    public ResponseEntity<Object> getOneModule(
+    public ResponseEntity<ModuleModel> getOneModule(
             @PathVariable("courseId") UUID courseId,
             @PathVariable("moduleId") UUID moduleId
     ) {
