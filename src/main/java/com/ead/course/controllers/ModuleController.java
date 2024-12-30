@@ -4,13 +4,18 @@ import com.ead.course.dtos.ModuleRecordDto;
 import com.ead.course.models.ModuleModel;
 import com.ead.course.service.CourseService;
 import com.ead.course.service.ModuleService;
+import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.ResponseEntity.status;
 
@@ -34,14 +39,17 @@ public class ModuleController {
             @RequestBody @Valid ModuleRecordDto moduleRecordDto
     ) {
         ModuleModel saved = moduleService.save(moduleRecordDto, courseService.findById(courseId).get());
-        return status(OK).body(saved);
+        return status(CREATED).body(saved);
     }
 
     @GetMapping("/courses/{courseId}/modules")
-    public ResponseEntity<List<ModuleModel>> getAllModules(
-            @PathVariable("courseId") UUID courseId
+    public ResponseEntity<Page<ModuleModel>> getAllModules(
+            @PathVariable("courseId") UUID courseId,
+            SpecificationTemplate.ModuleSpec spec,
+            Pageable pageable
     ) {
-        List<ModuleModel> courseModuleModelList = moduleService.findAllModulesIntoCourse(courseId);
+        Specification<ModuleModel> moduleModelSpecification = SpecificationTemplate.moduleCourseId(courseId).and(spec);
+        Page<ModuleModel> courseModuleModelList = moduleService.findAllModulesIntoCourse(moduleModelSpecification, pageable);
         return status(OK).body(courseModuleModelList);
     }
 

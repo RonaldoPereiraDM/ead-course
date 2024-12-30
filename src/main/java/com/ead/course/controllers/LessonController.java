@@ -7,7 +7,11 @@ import com.ead.course.models.LessonModel;
 import com.ead.course.models.ModuleModel;
 import com.ead.course.service.LessonService;
 import com.ead.course.service.ModuleService;
+import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +45,13 @@ public class LessonController {
     }
 
     @GetMapping("/modules/{moduleId}/lessons")
-    public ResponseEntity<List<LessonModel>> getAllLessons(@PathVariable(value = "moduleId") UUID moduleId) {
-        List<LessonModel> allLessonsIntoModule = lessonService.findAllLessonsIntoModule(moduleId);
+    public ResponseEntity<Page<LessonModel>> getAllLessons(
+            @PathVariable(value = "moduleId") UUID moduleId,
+            SpecificationTemplate.LessonSpec spec,
+            Pageable pageable
+    ) {
+        Specification<LessonModel> lessonModelSpecification = SpecificationTemplate.lessonModuleId(moduleId).and(spec);
+        Page<LessonModel> allLessonsIntoModule = lessonService.findAllLessonsIntoModule(moduleId, lessonModelSpecification, pageable);
         return status(OK).body(allLessonsIntoModule);
     }
 

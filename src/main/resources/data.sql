@@ -269,7 +269,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'223e4567-e89b-12d3-a456-426614174001', '2024-08-21 16:30:00', 'Explore os tipos básicos e avançados do TypeScript para desenvolvimento mais seguro',
+'223e4567-e89b-12d3-a456-426614174001', '2024-08-22 16:30:00', 'Explore os tipos básicos e avançados do TypeScript para desenvolvimento mais seguro',
 '2. Sistema de Tipos no TypeScript', 'www.exemplourl.com/video2', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -278,7 +278,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'323e4567-e89b-12d3-a456-426614174002', '2024-08-21 16:30:00', 'Compreenda os fundamentos do React e sua arquitetura baseada em componentes',
+'323e4567-e89b-12d3-a456-426614174002', '2024-08-23 16:30:00', 'Compreenda os fundamentos do React e sua arquitetura baseada em componentes',
 '3. Fundamentos do React', 'www.exemplourl.com/video3', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -287,7 +287,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'423e4567-e89b-12d3-a456-426614174003', '2024-08-21 16:30:00', 'Aprenda a criar e gerenciar estados em componentes React usando Hooks',
+'423e4567-e89b-12d3-a456-426614174003', '2024-08-24 16:30:00', 'Aprenda a criar e gerenciar estados em componentes React usando Hooks',
 '4. Estados e Hooks no React', 'www.exemplourl.com/video4', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -296,7 +296,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'523e4567-e89b-12d3-a456-426614174004', '2024-08-21 16:30:00', 'Entenda como implementar navegação entre páginas usando React Router',
+'523e4567-e89b-12d3-a456-426614174004', '2024-08-25 16:30:00', 'Entenda como implementar navegação entre páginas usando React Router',
 '5. Roteamento com React Router', 'www.exemplourl.com/video5', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -305,7 +305,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'623e4567-e89b-12d3-a456-426614174005', '2024-08-21 16:30:00', 'Aprenda a gerenciar formulários em React com validações e tratamento de erros',
+'623e4567-e89b-12d3-a456-426614174005', '2024-08-26 16:30:00', 'Aprenda a gerenciar formulários em React com validações e tratamento de erros',
 '6. Formulários no React', 'www.exemplourl.com/video6', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -314,7 +314,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'723e4567-e89b-12d3-a456-426614174006', '2024-08-21 16:30:00', 'Explore técnicas de estilização em React usando CSS Modules e Styled Components',
+'723e4567-e89b-12d3-a456-426614174006', '2024-08-27 16:30:00', 'Explore técnicas de estilização em React usando CSS Modules e Styled Components',
 '7. Estilização em React', 'www.exemplourl.com/video7', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -323,7 +323,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'823e4567-e89b-12d3-a456-426614174007', '2024-08-21 16:30:00', 'Aprenda a fazer chamadas API e gerenciar estados assíncronos em aplicações React',
+'823e4567-e89b-12d3-a456-426614174007', '2024-08-28 16:30:00', 'Aprenda a fazer chamadas API e gerenciar estados assíncronos em aplicações React',
 '8. Integração com APIs', 'www.exemplourl.com/video8', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -332,7 +332,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'923e4567-e89b-12d3-a456-426614174008', '2024-08-21 16:30:00', 'Implemente autenticação e autorização em sua aplicação React',
+'923e4567-e89b-12d3-a456-426614174008', '2024-08-29 16:30:00', 'Implemente autenticação e autorização em sua aplicação React',
 '9. Autenticação e Autorização', 'www.exemplourl.com/video9', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 
@@ -341,7 +341,7 @@ lesson_id, creation_date, description,
 title, video_url, module_module_id
 )
 VALUES (
-'a23e4567-e89b-12d3-a456-426614174009', '2024-08-21 16:30:00', 'Aprenda as melhores práticas de otimização e performance em aplicações React',
+'a23e4567-e89b-12d3-a456-426614174009', '2024-08-30 16:30:00', 'Aprenda as melhores práticas de otimização e performance em aplicações React',
 '10. Otimização e Performance', 'www.exemplourl.com/video10', 'cdef30b4-f639-438f-8f69-c6e515fd541d'
 );
 

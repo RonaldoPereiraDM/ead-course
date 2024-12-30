@@ -7,10 +7,13 @@ import com.ead.course.models.LessonModel;
 import com.ead.course.models.ModuleModel;
 import com.ead.course.repository.LessonRepository;
 import com.ead.course.repository.ModuleRepository;
-import com.ead.course.service.LessonService;
 import com.ead.course.service.ModuleService;
+import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -80,6 +83,11 @@ public class ModuleServiceImpl implements ModuleService {
             throw new NotFoundException("Error: Module not found!");
         }
         return moduleModelOptional;
+    }
+
+    @Override
+    public Page<ModuleModel> findAllModulesIntoCourse(Specification<ModuleModel> spec, Pageable pageable) {
+        return moduleRepository.findAll(spec, pageable);
     }
 
 }
