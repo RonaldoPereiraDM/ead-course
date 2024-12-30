@@ -1,6 +1,9 @@
 package com.ead.course.exceptions;
 
+import com.ead.course.controllers.CourseController;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -17,6 +20,8 @@ import static org.springframework.http.ResponseEntity.status;
 
 @ControllerAdvice
 public class GloblalExceptionHandler {
+
+    private Logger logger = LoggerFactory.getLogger(GloblalExceptionHandler.class);
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorRecordResponse> handlerNotFoundException(NotFoundException ex){
@@ -38,6 +43,7 @@ public class GloblalExceptionHandler {
                 "Error: Validation failed",
                 errors
         );
+        logger.error("MethodArgumentNotValidException message: {}", ex.getMessage());
         return status(BAD_REQUEST).body(errorResponse);
     }
 
@@ -54,6 +60,7 @@ public class GloblalExceptionHandler {
             }
         }
         var errorResponse = new ErrorRecordResponse(BAD_REQUEST.value(), "Error: Validation failed", errors);
+        logger.error("HttpMessageNotReadableException message: {}", ex.getMessage());
         return status(BAD_REQUEST).body(errorResponse);
     }
 

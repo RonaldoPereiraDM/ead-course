@@ -6,6 +6,8 @@ import com.ead.course.models.ModuleModel;
 import com.ead.course.service.CourseService;
 import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,8 @@ import static org.springframework.http.ResponseEntity.status;
 @CrossOrigin("")
 public class CourseController {
 
+    private Logger logger = LoggerFactory.getLogger(CourseController.class);
+
     private final CourseService courseService;
 
     public CourseController(
@@ -36,8 +40,9 @@ public class CourseController {
 
     @PostMapping
     public ResponseEntity<Object> saveCourse(@RequestBody @Valid CourseRecordDto courseRecordDto){
-
+        logger.debug("POST saveCourse courseRecordDto received {}", courseRecordDto);
         if(courseService.existsByName(courseRecordDto.name())){
+            logger.warn("POST Course Name is Already Taken {}", courseRecordDto.name());
             return status(CONFLICT).body("Error: Course Name is Already Taken!");
         }
 
@@ -47,8 +52,8 @@ public class CourseController {
 
     @GetMapping
     public ResponseEntity<Page<CourseModel>> getAllCourses(SpecificationTemplate.CourseSpec spec, Pageable pageable){
+        logger.debug("GET all courses.");
         Page<CourseModel> all = courseService.findAll(spec, pageable);
-
         if(!all.isEmpty()){
             for (CourseModel course : all.toList()){
                 UUID courseId = course.getCourseId();
@@ -63,12 +68,14 @@ public class CourseController {
 
     @GetMapping("/{courseId}")
     public ResponseEntity<CourseModel> getOneCourse(@PathVariable("courseId") UUID courseId){
+        logger.debug("GET retreiveCourse courseId received {}", courseId);
         Optional<CourseModel> courseModel = courseService.findById(courseId);
         return status(OK).body(courseModel.get());
     }
 
     @DeleteMapping("/{courseId}")
     public ResponseEntity<Object> deleteCourse(@PathVariable("courseId") UUID courseId){
+        logger.debug("DELETE deleteCourse courseId received {}", courseId);
         CourseModel courseModel = courseService.findById(courseId).get();
         courseService.delete(courseModel);
         return status(OK).body("Course deleted successfully.");
@@ -79,6 +86,7 @@ public class CourseController {
             @PathVariable("courseId") UUID courseId,
             @RequestBody @Valid CourseRecordDto courseRecordDto
     ){
+        logger.debug("PUT updateCourse courseRecordDto received {}", courseRecordDto);
         CourseModel update = courseService.update(courseRecordDto, courseService.findById(courseId).get());
         return status(OK).body(update);
     }
