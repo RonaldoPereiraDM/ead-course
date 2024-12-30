@@ -21,3 +21,13 @@ spring:
       properties:
         hibernate:
           show_sql: true
+  output:
+    ansi:
+      enabled: Always # Habilita cores ANSI no console sempre
+
+logging:
+  level:
+    com.ead: TRACE # Logs mais detalhados para seu pacote específico
+    root:  # Nível padrão para todos os logs não especificados
+    org.springframework.web: DEBUG # Logs detalhados das requisições web
+    org.hibernate: INFO  # Logs padrão do Hibernate
