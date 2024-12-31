@@ -3,7 +3,6 @@ package com.ead.course.controllers;
 import com.ead.course.configs.annotations.Monitored;
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.models.CourseModel;
-import com.ead.course.models.ModuleModel;
 import com.ead.course.service.CourseService;
 import com.ead.course.specitication.SpecificationTemplate;
 import jakarta.validation.Valid;
@@ -11,14 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static com.ead.course.specitication.SpecificationTemplate.courseUserId;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.*;
@@ -54,9 +52,17 @@ public class CourseController {
 
     @Monitored
     @GetMapping
-    public ResponseEntity<Page<CourseModel>> getAllCourses(SpecificationTemplate.CourseSpec spec, Pageable pageable){
+    public ResponseEntity<Page<CourseModel>> getAllCourses(
+            SpecificationTemplate.CourseSpec spec,
+            Pageable pageable,
+            @RequestParam(required = false) UUID userId
+    ){
         logger.debug("GET all courses.");
-        Page<CourseModel> all = courseService.findAll(spec, pageable);
+
+        Page<CourseModel> all = (userId != null) ?
+                courseService.findAll(courseUserId(userId), pageable) :
+                courseService.findAll(spec, pageable);
+
         if(!all.isEmpty()){
             for (CourseModel course : all.toList()){
                 UUID courseId = course.getCourseId();
