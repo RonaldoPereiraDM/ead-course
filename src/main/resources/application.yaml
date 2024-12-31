@@ -24,6 +24,10 @@ spring:
   output:
     ansi:
       enabled: Always # Habilita cores ANSI no console sempre
+ead:
+  api:
+    url:
+      authuser: 'http://localhost:8087/ead-authuser'
 
 logging:
   level:
