@@ -2,13 +2,10 @@ package com.ead.course.models;
 
 import com.ead.course.enums.CourseLevel;
 import com.ead.course.enums.CourseStatus;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
@@ -64,6 +61,10 @@ public class CourseModel extends RepresentationModel<CourseModel> implements Ser
     @Fetch(SUBSELECT)
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<ModuleModel> modules;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "course", fetch = LAZY)
+    private Set<CourseUserModel> coursesUsers;
 
     public UUID getCourseId() {
         return courseId;
@@ -143,6 +144,14 @@ public class CourseModel extends RepresentationModel<CourseModel> implements Ser
 
     public void setModules(Set<ModuleModel> modules) {
         this.modules = modules;
+    }
+
+    public Set<CourseUserModel> getCoursesUsers() {
+        return coursesUsers;
+    }
+
+    public void setCoursesUsers(Set<CourseUserModel> coursesUsers) {
+        this.coursesUsers = coursesUsers;
     }
 
     @Override
